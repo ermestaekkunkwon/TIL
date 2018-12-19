@@ -63,6 +63,10 @@ print(my_numbers)
 # 5 등: real과 my가 3개 같은것
 # 꽝
 
+for expected_value in my_numbers():
+
+for estimated_vale in real_numbers():
+
 results =[]
 if results: my_numbers == real_numbers
     print ('1st prize')
