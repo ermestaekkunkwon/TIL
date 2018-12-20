@@ -10,7 +10,7 @@ print(my_numbers)
 
 
 def get_lotto(draw_no): # -> 다만 이것으로는 837회 밖에 조회를 못함 get_lotto(num=???) -> 값이 계속 들어온다 # 빈칸에는 아무것도 요구사항없이 결과를 내었으나, 이제는 뭔가를 주어야 결과를 냄.
-    lotto_data = requests.get('https://www.nlotto.co.kr/common.do?method=getLottoNumber&drwNo=' + str(draw_no), verify=False).json()
+    lotto_data = requests.get('https://www.dhlottery.co.kr/common.do?method=getLottoNumber&drwNo=' + str(draw_no)).json()
     numbers = []
     for key, value in lotto_data.items():
         if 'drwtNo' in key:
@@ -21,67 +21,35 @@ def get_lotto(draw_no): # -> 다만 이것으로는 837회 밖에 조회를 못�
 
     return {'real_numbers' : numbers, 'bonus_numbers' : bonus_number } # final_dict { 'numbers' : numbers, 'bonus' : bonus_number} -> return final_dict
 
-real_numbers = get_lotto(1) # 가로안의 1은 인자. arguments. args
+real_numbers = get_lotto(837) # 가로안의 1은 인자. arguments. args
 print (real_numbers)
 
 
-def am_i_lucky (my_numbers, real_numbers):
-    count = 0
-    for my_number in my_numbers:
-        for real_number in real_numbers:
-            if my_number == real_number:
-                count +=1
 
-    match_count = len(my_numbers & real_numbers)
-    if match_count == 6: # same meaning of if diff == 0:
-        print('1등')
-    elif match_count == 5 and bonus_number in my_numbers:
-        print('2등')
-    elif match_count == 5:
-        print('3등')
-    elif match_count == 4:
-        print('4등')
-    elif match_count == 3:
-        print('5등')
+def am_i_lucky(pick, draw):
+    match = set (pick) & set (draw['real_numbers'])   
+    if len (match) == 6 :
+        return ('1등') #!!! -> 함수에는 print 안쓰는 것이 좋다.
+    elif len (match) == 5 and draw['bonus_numbers'] in pick:    # 이미 list_1을 pick이라고 해서 pick이라고 쓰고, 함수 밖에서는  draw['bonus] in list_1
+        return ('3등')
+    elif len (match) == 4:
+        return ('4등')
+    elif len (match) == 3:
+        return ('5등')
     else:
-        print('꽝')
+        return ('꽝')
 
-    return match_count
-
-result = am_i_lucky(my_numbers, real_numbers)
+result = am_i_lucky(pick_lotto(), get_lotto(837))
 print(result)
 
 
 
-# count = 0 # 카운트를  제로부터 시작  ex) n=0
-# for my_number in my_numbers:
-#     for real_number in real_numbers:
-#         if my_number == real_number:
-#             count +=1
-
-# print (count)
 
 
-# match_count = len(my_numbers & real_numbers)
-# print(match_count)
 
-# if match_count == 6: # same meaning of if diff == 0:
-#     print('1등')
-# elif match_count == 5 and bonus_number in my_numbers:
-#     print('2등')
-# elif match_count == 5:
-#     print('3등')
-# elif match_count == 4:
-#     print('4등')
-# elif match_count == 3:
-#     print('5등')
-# else:
-#     print('꽝')
 
-# # my_numbers = [1, 2, 3, 4, 5, 6]
-# # real_numbers = [1, 2, 3, 4, 5, 6]
 
-# # bonus_number = 7
+
 
 # # str = 'ssafy'
 # # str()
@@ -90,32 +58,54 @@ print(result)
 
 
 
-# # for expected_value in my_numbers():
+# 예제 풀이!!
 
-# # for estimated_vale in real_numbers():
+# 1단계 정답
 
-# # results =[]
-# # if results: my_numbers == real_numbers
-# #     print ('1st prize')
-# # else:
-# #     print ('failed')
+# def am_i_lucky(pick, draw):
+#     match = set (pick) & set (draw)
+#     if len (match) == 6 :
+#         return ('1등') #!!! -> 함수에는 print 안쓰는 것이 좋다.
+#     elif len (match) == 5:
+#         return ('3등')
+#     elif len (match) == 4:
+#         return ('4등')
+#     elif len (match) == 3:
+#         return ('5등')
+#     else:
+#         return ('꽝')
 
-# #shit
+# print(am_i_lucky([1, 2, 3], [1, 2, 4]))
+
+# 앞의 것이 string이면 뒤의 것도 string
+
+print (int(True))
 
 
-# 예제
+# 2단계 정답!
+
+
+
+# am_i_lucky(list_1, dict_1)
+
+# def am_i_lucky(pick, draw):
+#     match = set (pick) & set (draw['numbers'])   
+#     if len (match) == 6 :
+#         return ('1등') #!!! -> 함수에는 print 안쓰는 것이 좋다.
+#     elif len (match) == 5 and draw['bonus'] in pick:    # 이미 list_1을 pick이라고 해서 pick이라고 쓰고, 함수 밖에서는  draw['bonus] in list_1
+#         return ('3등')
+#     elif len (match) == 4:
+#         return ('4등')
+#     elif len (match) == 3:
+#         return ('5등')
+#     else:
+#         return ('꽝')
 
 # list_1 = [1, 2, 3, 4, 5, 6]
-# list_2 = [1, 2, 3, 4, 5, 7]
-
-# luckiest(list_1, list_2)
-
-# def luckiest(pick, draw):
-#     print (pick)
-#     print (draw)
-#     #...
-#     return ('1등')
+# dict_1 = {
+#     'numbers' : [1, 2, 3, 4, 5, 7],
+#     'bonus' : 6
+# }
 
 
-# [1, 2, 3, 4, 5, 6] -> 결과값
-# [1, 2, 3, 4, 5, 7] -> 결과값
+# !! dict_1['numbers'] #!! -> 딕셔너리에서 추출하는 법!!! 키를 통해 밸류를 추출
