@@ -12,4 +12,6 @@ print(average([10, 20, 30]))
 
 # 만약 from이 없고 import math_functions 를 한다면
 # print(math_functions.cube(5))
-# print(math_functions.average[10, 20, 30])) 를 하면 됨
+# print(math_functions.average[10, 20, 30])) 를 하면 됨/햐
+
+# 좋은 것을 고르자!
