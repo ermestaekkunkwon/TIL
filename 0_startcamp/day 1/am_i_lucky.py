@@ -1,6 +1,14 @@
 import requests
 import random
 
+my_numbers = pick_lotto()
+real_numbers = get_lotto()
+result = am_i_lucky(my_numbers, real_numbers)
+
+
+
+
+
 url= 'https://www.nlotto.co.kr/common.do?method=getLottoNumber&drwNo=837'
 
 response = requests.get(url, verify=False)
