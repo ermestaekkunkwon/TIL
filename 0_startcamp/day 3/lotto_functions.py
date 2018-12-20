@@ -25,7 +25,7 @@ real_numbers = get_lotto(1) # 가로안의 1은 인자. arguments. args
 print (real_numbers)
 
 
-def am_i_lucky ():
+def am_i_lucky (my_numbers, real_numbers):
     count = 0
     for my_number in my_numbers:
         for real_number in real_numbers:
@@ -101,3 +101,21 @@ print(result)
 # #     print ('failed')
 
 # #shit
+
+
+# 예제
+
+# list_1 = [1, 2, 3, 4, 5, 6]
+# list_2 = [1, 2, 3, 4, 5, 7]
+
+# luckiest(list_1, list_2)
+
+# def luckiest(pick, draw):
+#     print (pick)
+#     print (draw)
+#     #...
+#     return ('1등')
+
+
+# [1, 2, 3, 4, 5, 6] -> 결과값
+# [1, 2, 3, 4, 5, 7] -> 결과값

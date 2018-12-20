@@ -1,9 +1,9 @@
 import requests
 import random
 
-my_numbers = pick_lotto()
-real_numbers = get_lotto()
-result = am_i_lucky(my_numbers, real_numbers)
+# my_numbers = pick_lotto()
+# real_numbers = get_lotto()
+# result = am_i_lucky(my_numbers, real_numbers)
 
 
 
