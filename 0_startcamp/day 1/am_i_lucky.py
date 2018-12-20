@@ -18,6 +18,7 @@ for key, value in lotto_data.items():
 
 
 real_numbers.sort()
+real_numbers = set(real_numbers)
 bonus_number = lotto_data['bnusNo']
 print(real_numbers)
 
@@ -52,6 +53,8 @@ my_numbers = random.sample(numbers, 6)
 
 my_numbers.sort()
 
+my_numbers = set(my_numbers)
+
 print(my_numbers)
 
 
@@ -72,6 +75,22 @@ for my_number in my_numbers:
 
 print (count)
 
+
+match_count = len(my_numbers & real_numbers)
+print(match_count)
+
+if match_count == 6: # same meaning of if diff == 0:
+    print('1등')
+elif match_count == 5 and bonus_number in my_numbers:
+    print('2등')
+elif match_count == 5:
+    print('3등')
+elif match_count == 4:
+    print('4등')
+elif match_count == 3:
+    print('5등')
+else:
+    print('꽝')
 
 # my_numbers = [1, 2, 3, 4, 5, 6]
 # real_numbers = [1, 2, 3, 4, 5, 6]

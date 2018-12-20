@@ -16,3 +16,9 @@ elif count == 5 and bonus in my_numbers:
     print(2)
 elif count == 5:
     print(3)
+
+
+# list = [1, 2, 3]
+# tuple = (1, 2, 3)
+
+# set = {1, 2, 3}
