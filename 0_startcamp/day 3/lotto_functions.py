@@ -9,8 +9,8 @@ my_numbers = pick_lotto()
 print(my_numbers)
 
 
-def get_lotto(num): # -> 다만 이것으로는 837회 밖에 조회를 못함
-    lotto_data = requests.get('https://www.nlotto.co.kr/common.do?method=getLottoNumber&drwNo=' + num, verify=False).json()
+def get_lotto(draw_no): # -> 다만 이것으로는 837회 밖에 조회를 못함 get_lotto(num=???) -> 값이 계속 들어온다 # 빈칸에는 아무것도 요구사항없이 결과를 내었으나, 이제는 뭔가를 주어야 결과를 냄.
+    lotto_data = requests.get('https://www.nlotto.co.kr/common.do?method=getLottoNumber&drwNo=' + str(draw_no), verify=False).json()
     numbers = []
     for key, value in lotto_data.items():
         if 'drwtNo' in key:
@@ -21,7 +21,7 @@ def get_lotto(num): # -> 다만 이것으로는 837회 밖에 조회를 못함
 
     return {'real_numbers' : numbers, 'bonus_numbers' : bonus_number } # final_dict { 'numbers' : numbers, 'bonus' : bonus_number} -> return final_dict
 
-real_numbers = get_lotto()
+real_numbers = get_lotto(1) # 가로안의 1은 인자. arguments. args
 print (real_numbers)
 
 
@@ -48,7 +48,7 @@ def am_i_lucky ():
 
     return match_count
 
-result = am_i_lucky()
+result = am_i_lucky(my_numbers, real_numbers)
 print(result)
 
 
