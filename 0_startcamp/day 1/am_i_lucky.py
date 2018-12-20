@@ -63,12 +63,36 @@ print(my_numbers)
 # 5 등: real과 my가 3개 같은것
 # 꽝
 
-for expected_value in my_numbers():
 
-for estimated_vale in real_numbers():
+count = 0 # 카운트를  제로부터 시작  ex) n=0
+for my_number in my_numbers:
+    for real_number in real_numbers:
+        if my_number == real_number:
+            count +=1
 
-results =[]
-if results: my_numbers == real_numbers
-    print ('1st prize')
-else:
-    print ('failed')
+print (count)
+
+
+# my_numbers = [1, 2, 3, 4, 5, 6]
+# real_numbers = [1, 2, 3, 4, 5, 6]
+
+# bonus_number = 7
+
+# str = 'ssafy'
+# str()
+# sum= -> sum, str 은 쓰지말고 total을 써라
+# sum()
+
+
+
+# for expected_value in my_numbers():
+
+# for estimated_vale in real_numbers():
+
+# results =[]
+# if results: my_numbers == real_numbers
+#     print ('1st prize')
+# else:
+#     print ('failed')
+
+#shit
