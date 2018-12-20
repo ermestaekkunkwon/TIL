@@ -108,7 +108,7 @@ for key, value in cities_temp.items():
     if highest in value:
         print('도시 중 가장 더운', key, max(value))
     if lowest in value:
-        print('소지 중 가장 추운', key, min(value))
+        print('도시 중 가장 추운', key, min(value))
 
 
 hottest = []
