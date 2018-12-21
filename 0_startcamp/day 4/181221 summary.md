@@ -1,4 +1,4 @@
-# 'http:// ide.c9.io / eduyu/startcamp'
+1. # 'http:// ide.c9.io / eduyu/startcamp'
           # domain   #route
 
 # _*_ coding: utf-8 _*_
@@ -197,3 +197,22 @@ def pong():
 
 if __name__ == '__main__':
     app.run(host='0.0.0.0', port=8080)
+
+
+    2. 궁합 챗봇/ 서버
+
+    # 궁합 챗봇 / 서버
+이름: 권택건
+
+## 하는 일
+이건 궁합을 보는 척 하며 사람을 낚는 앱입니다.
+
+## 어려웠던 점
+처음부터 만들기 어려웠습니다.
+
+## 작동
+사용자가 /ping으로 요청을 보내면
+이를 입력받을  html로 보낸다
+사용자가 이름을 입력하면
+/pong에서 입력받은 이름을 telegram 메시지로 보냅니다.
+t사용자에게 궁합 점수를 보냅니다.
